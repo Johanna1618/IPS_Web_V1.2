@@ -107,18 +107,19 @@ namespace IPS_Logic.DatabaseIPS
 
                 entity.Property(e => e.TipoConvenio).HasColumnName("tipoConvenio");
             });
-
+            // Actualizar el campo "nombre" por tipo varchar(50)----------
             modelBuilder.Entity<Ip>(entity =>
             {
                 entity.ToTable("IPS");
 
                 entity.Property(e => e.IdSede).HasColumnName("idSede");
-
+            //-----------------------------------------------------------
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(10)
                     .HasColumnName("nombre")
                     .IsFixedLength(true);
+            //-----------------------------------------------------------
 
                 entity.HasOne(d => d.IdSedeNavigation)
                     .WithMany(p => p.Ips)

@@ -12,7 +12,7 @@ namespace IPS_Logic.Logic
     {
         DB_IPSContext _IPSContext = new DB_IPSContext();
 
-        // Get people from Db to Entity
+        // Personas convertidas del tipo Db a Entity
         public List<PersonaEntity> GetAllPeople()
         {
             List<PersonaEntity> listPersonEntities = new List<PersonaEntity>();
@@ -34,6 +34,12 @@ namespace IPS_Logic.Logic
 
             return listPersonEntities;
         }
+        /* Paciente nuevo...
+         trae herencia de PersonaEntity
+         tiene IdPersona y IdConvenio
+         el convenio tiene: TipoConvenio 1 y 2, valor bit 1 y 0
+        */
+
 
     }
 }

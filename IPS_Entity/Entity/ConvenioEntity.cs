@@ -10,9 +10,9 @@ namespace IPS_Entity.Entity
     {
         public int Id { get; set; }
         public bool TipoConvenio { get; set; }
-        public DateTime HorarioA { get; set; } // revisar
-        public DateTime HorarioB { get; set; } // revisar
-        public int Mensualidad { get; set; }
-        public int Descuento { get; set; }
+        public DateTime HorarioA { get; set; } // allow null
+        public DateTime HorarioB { get; set; } // allow null
+        public int Mensualidad { get; set; } // allow null
+        public int Descuento { get; set; } // allow null
     }
 }

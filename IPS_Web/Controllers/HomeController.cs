@@ -1,4 +1,5 @@
-﻿using IPS_Logic.Logic;
+﻿using IPS_Entity.Entity;
+using IPS_Logic.Logic;
 using IPS_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace IPS_Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller // se puede heredar este controller a otros
     {
         private readonly ILogger<HomeController> _logger;
 
@@ -21,9 +22,22 @@ namespace IPS_Web.Controllers
 
         public IActionResult Index()
         {
-            IpsWebLogic ipswebLogic = new IpsWebLogic();
+            IpsWebLogic ipswebLogic = new IpsWebLogic(); // Mmm...
 
-            return View(ipswebLogic.GetAllPeople());
+            return View(ipswebLogic.GetAllPeople()); // viene de IpsWebLogic
+        }
+
+        public IActionResult Create() // vista sola
+        {
+            return View();
+        }
+
+        // Post: oculta | Get: muestra
+        [HttpPost]
+        public IActionResult Create(PersonaEntity personaEntity) // captura
+        {
+
+            return View(personaEntity); // trae aquí
         }
 
         public IActionResult SignUP() // Registro
