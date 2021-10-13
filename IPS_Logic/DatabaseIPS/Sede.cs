@@ -10,15 +10,15 @@ namespace IPS_Logic.DatabaseIPS
         public Sede()
         {
             CitaMedicas = new HashSet<CitaMedica>();
-            Ips = new HashSet<Ip>();
         }
 
         public int Id { get; set; }
         public string Nombre { get; set; }
         public int IdCiudad { get; set; }
+        public int IdIps { get; set; }
 
         public virtual Ciudad IdCiudadNavigation { get; set; }
+        public virtual Ips IdIpsNavigation { get; set; }
         public virtual ICollection<CitaMedica> CitaMedicas { get; set; }
-        public virtual ICollection<Ip> Ips { get; set; }
     }
 }

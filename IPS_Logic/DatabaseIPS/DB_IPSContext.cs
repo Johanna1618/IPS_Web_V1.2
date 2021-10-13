@@ -18,9 +18,9 @@ namespace IPS_Logic.DatabaseIPS
         }
 
         public virtual DbSet<CitaMedica> CitaMedicas { get; set; }
-        public virtual DbSet<Ciudad> Ciudades { get; set; }
+        public virtual DbSet<Ciudad> Ciudads { get; set; }
         public virtual DbSet<Convenio> Convenios { get; set; }
-        public virtual DbSet<Ip> Ips { get; set; }
+        public virtual DbSet<Ips> Ips { get; set; }
         public virtual DbSet<Medico> Medicos { get; set; }
         public virtual DbSet<MedicoPorSede> MedicoPorSedes { get; set; }
         public virtual DbSet<Paciente> Pacientes { get; set; }
@@ -107,25 +107,16 @@ namespace IPS_Logic.DatabaseIPS
 
                 entity.Property(e => e.TipoConvenio).HasColumnName("tipoConvenio");
             });
-            // Actualizar el campo "nombre" por tipo varchar(50)----------
-            modelBuilder.Entity<Ip>(entity =>
+
+            modelBuilder.Entity<Ips>(entity =>
             {
                 entity.ToTable("IPS");
 
-                entity.Property(e => e.IdSede).HasColumnName("idSede");
-            //-----------------------------------------------------------
                 entity.Property(e => e.Nombre)
                     .IsRequired()
-                    .HasMaxLength(10)
-                    .HasColumnName("nombre")
-                    .IsFixedLength(true);
-            //-----------------------------------------------------------
-
-                entity.HasOne(d => d.IdSedeNavigation)
-                    .WithMany(p => p.Ips)
-                    .HasForeignKey(d => d.IdSede)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_IPS_Sede");
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("nombre");
             });
 
             modelBuilder.Entity<Medico>(entity =>
@@ -234,6 +225,8 @@ namespace IPS_Logic.DatabaseIPS
 
                 entity.Property(e => e.IdCiudad).HasColumnName("idCiudad");
 
+                entity.Property(e => e.IdIps).HasColumnName("idIps");
+
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(50)
@@ -245,6 +238,12 @@ namespace IPS_Logic.DatabaseIPS
                     .HasForeignKey(d => d.IdCiudad)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Sede_Ciudad");
+
+                entity.HasOne(d => d.IdIpsNavigation)
+                    .WithMany(p => p.Sedes)
+                    .HasForeignKey(d => d.IdIps)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Sede_IPS");
             });
 
             modelBuilder.Entity<Servicio>(entity =>

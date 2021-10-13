@@ -12,7 +12,7 @@ namespace IPS_Logic.Logic
     {
         DB_IPSContext _IPSContext = new DB_IPSContext();
 
-        // Personas convertidas del tipo Db a Entity
+        // Conversión tipo Db a Entity
         public List<PersonaEntity> GetAllPeople()
         {
             List<PersonaEntity> listPersonEntities = new List<PersonaEntity>();
@@ -23,23 +23,55 @@ namespace IPS_Logic.Logic
             {
                 PersonaEntity personaEntity = new PersonaEntity();
 
-                personaEntity.Id = PersonDataBase.Id;
-                personaEntity.Nombre = PersonDataBase.Nombre;
-                personaEntity.Apellidos = PersonDataBase.Apellidos;
-                personaEntity.Cedula = PersonDataBase.Cedula;
-                personaEntity.Contraseña = PersonDataBase.Contraseña;
-
-                listPersonEntities.Add(personaEntity);
+                listPersonEntities.Add(ConvertPersonDatabaseToPersonEntity(PersonDataBase));
             }
 
             return listPersonEntities;
         }
-        /* Paciente nuevo...
-         trae herencia de PersonaEntity
-         tiene IdPersona y IdConvenio
-         el convenio tiene: TipoConvenio 1 y 2, valor bit 1 y 0
-        */
+
+        public PersonaEntity AddPerson(PersonaEntity personaEntity)
+        {
+            if (GetAllPeople().Where(x => x.Cedula == personaEntity.Cedula).Any()) {
+
+                PersonaEntity persona = new PersonaEntity();
+                persona.Message = "Ya extiste un usuario con esa cédula";
+                return persona;
+            }
+
+            _IPSContext.Personas.Add(ConvertPersonEntityToPersonDatabase(personaEntity)); // conversión Ent to Db
+            _IPSContext.SaveChanges();
+
+            return personaEntity;
+        }
+
+        //----------------------------
+        private Persona ConvertPersonEntityToPersonDatabase(PersonaEntity personaEntity) // Ent to Db
+        {
+            Persona persona = new Persona();
+
+            persona.Id = personaEntity.Id;
+            persona.Nombre = personaEntity.Nombre;
+            persona.Apellidos = personaEntity.Apellidos;
+            persona.Cedula = personaEntity.Cedula;
+            persona.Contraseña = personaEntity.Contraseña;
+
+            return persona;
+        }
+
+        private PersonaEntity ConvertPersonDatabaseToPersonEntity(Persona persona) // Db to Ent
+        {
+            PersonaEntity personaEntity = new PersonaEntity();
+
+            personaEntity.Id = persona.Id;
+            personaEntity.Nombre = persona.Nombre;
+            personaEntity.Apellidos = persona.Apellidos;
+            personaEntity.Cedula = persona.Cedula;
+            personaEntity.Contraseña = persona.Contraseña;
+
+            return personaEntity;
+        }
 
 
     }
+
 }

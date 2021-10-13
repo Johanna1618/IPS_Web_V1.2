@@ -14,6 +14,7 @@ namespace IPS_Web.Controllers
     public class HomeController : Controller // se puede heredar este controller a otros
     {
         private readonly ILogger<HomeController> _logger;
+        private IpsWebLogic ipswebLogic = new IpsWebLogic(); // private solo para estas vistas
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -22,7 +23,6 @@ namespace IPS_Web.Controllers
 
         public IActionResult Index()
         {
-            IpsWebLogic ipswebLogic = new IpsWebLogic(); // Mmm...
 
             return View(ipswebLogic.GetAllPeople()); // viene de IpsWebLogic
         }
@@ -36,6 +36,7 @@ namespace IPS_Web.Controllers
         [HttpPost]
         public IActionResult Create(PersonaEntity personaEntity) // captura
         {
+            ipswebLogic.AddPerson(personaEntity); // método creado en IpsWebLogic
 
             return View(personaEntity); // trae aquí
         }

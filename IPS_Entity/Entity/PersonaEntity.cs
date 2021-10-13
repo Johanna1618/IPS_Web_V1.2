@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IPS_Entity.Entity
 {
-    public class PersonaEntity
+    public class PersonaEntity : BaseEntity
     {
         public int Id { get; set; }
         public string Nombre { get; set; }

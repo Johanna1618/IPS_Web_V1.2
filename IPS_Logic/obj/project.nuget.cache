@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fKFWuDyI14pvLlWF8enFuH905VUOUduS9AGgSB69t1In4fG4z5gi5BZmxxWXtEYtdouHOdVxrwLpquB/IFcBjQ==",
+  "dgSpecHash": "g1/P7nyQ6EiMfR/Z+3xgATnoHy6b7i8GDI5J6PgIr2PwJ9wr1D0wq4+dVXA+79vy50OGhf+cClE+Owfw0IQSCQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ARELIS\\source\\repos\\IPS_Web\\IPS_Logic\\IPS_Logic.csproj",
+  "projectFilePath": "C:\\Users\\ARELIS\\source\\repos\\IPS_Web_editar\\IPS_Logic\\IPS_Logic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ARELIS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ARELIS\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

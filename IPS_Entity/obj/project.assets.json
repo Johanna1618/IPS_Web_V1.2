@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ARELIS\\source\\repos\\IPS_Web\\IPS_Entity\\IPS_Entity.csproj",
+      "projectUniqueName": "C:\\Users\\ARELIS\\source\\repos\\IPS_Web_editar\\IPS_Entity\\IPS_Entity.csproj",
       "projectName": "IPS_Entity",
-      "projectPath": "C:\\Users\\ARELIS\\source\\repos\\IPS_Web\\IPS_Entity\\IPS_Entity.csproj",
+      "projectPath": "C:\\Users\\ARELIS\\source\\repos\\IPS_Web_editar\\IPS_Entity\\IPS_Entity.csproj",
       "packagesPath": "C:\\Users\\ARELIS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ARELIS\\source\\repos\\IPS_Web\\IPS_Entity\\obj\\",
+      "outputPath": "C:\\Users\\ARELIS\\source\\repos\\IPS_Web_editar\\IPS_Entity\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ARELIS\\AppData\\Roaming\\NuGet\\NuGet.Config",

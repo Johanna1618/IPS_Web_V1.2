@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace IPS_Logic.DatabaseIPS
 {
-    public partial class Ip
+    public partial class Ips
     {
-        public Ip()
+        public Ips()
         {
             Sedes = new HashSet<Sede>();
         }

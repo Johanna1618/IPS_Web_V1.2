@@ -299,3 +299,6 @@ C:\Users\ARELIS\source\repos\IPS_Web_V1.2\IPS_Web\obj\Debug\net5.0\IPS_Web.genru
 C:\Users\ARELIS\source\repos\IPS_Web\IPS_Web\obj\Debug\net5.0\Razor\Views\Home\ListaPersonas.cshtml.g.cs
 C:\Users\ARELIS\source\repos\IPS_Web\IPS_Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\ARELIS\source\repos\IPS_Web\IPS_Web\obj\Debug\net5.0\Razor\Views\Home\Create.cshtml.g.cs
+C:\Users\ARELIS\source\repos\IPS_Web_V1.2\IPS_Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\ARELIS\source\repos\IPS_Web_V1.2\IPS_Web\obj\Debug\net5.0\Razor\Views\Home\Create.cshtml.g.cs
+C:\Users\ARELIS\source\repos\IPS_Web_V1.2\IPS_Web\obj\Debug\net5.0\Razor\Views\Home\ListaPersonas.cshtml.g.cs
