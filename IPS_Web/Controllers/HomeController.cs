@@ -36,9 +36,13 @@ namespace IPS_Web.Controllers
         [HttpPost]
         public IActionResult Create(PersonaEntity personaEntity) // captura
         {
-            ipswebLogic.AddPerson(personaEntity); // método creado en IpsWebLogic
+            var person = ipswebLogic.AddPerson(personaEntity); // método creado en IpsWebLogic
 
-            return View(personaEntity); // trae aquí
+            ViewBag.Message = person.Message;
+            ViewBag.Type = person.Type;
+
+            return View(personaEntity); 
+
         }
 
         public IActionResult SignUP() // Registro

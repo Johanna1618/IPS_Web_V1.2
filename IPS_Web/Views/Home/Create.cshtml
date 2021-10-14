@@ -7,12 +7,27 @@
 <h1>Crear Persona</h1>
 
 <h4>PersonaEntity</h4>
+
+@{
+
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+
+        <div class="alert alert-@ViewBag.Type">
+            <strong>@ViewBag.Message</strong>
+        </div> 
+
+    }
+}
+
+
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
+
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />

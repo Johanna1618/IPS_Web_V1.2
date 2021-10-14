@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0Q8fwLwnhxciPqABDPRTQNhwsgsLooSM81wR0hcKCHA/CHASQIgfFzYPem3ScDj0Dni4cElmBQSeTScS3vk/Hw==",
+  "dgSpecHash": "Fgo/DBWwjyxM/VZYl48TOYUKpklXyBNqahaHg8dKnopsqlMBwXC1E1n/OkjCyIlGve57cs3WJHrSKmhW49qsDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ARELIS\\source\\repos\\IPS_Web_editar\\IPS_Web\\IPS_Web.csproj",
+  "projectFilePath": "C:\\Users\\ARELIS\\source\\repos\\IPS_Web_V1.2\\IPS_Web\\IPS_Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ARELIS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ARELIS\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

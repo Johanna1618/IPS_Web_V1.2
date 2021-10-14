@@ -9,5 +9,6 @@ namespace IPS_Entity.Entity
     public class BaseEntity
     {
         public string Message { get; set; }
+        public string Type { get; set; }
     }
 }

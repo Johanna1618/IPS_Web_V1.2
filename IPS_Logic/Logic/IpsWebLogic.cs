@@ -31,17 +31,32 @@ namespace IPS_Logic.Logic
 
         public PersonaEntity AddPerson(PersonaEntity personaEntity)
         {
+            try
+            {
+
+            
             if (GetAllPeople().Where(x => x.Cedula == personaEntity.Cedula).Any()) {
 
                 PersonaEntity persona = new PersonaEntity();
                 persona.Message = "Ya extiste un usuario con esa cédula";
+                persona.Type = "danger";
                 return persona;
             }
 
-            _IPSContext.Personas.Add(ConvertPersonEntityToPersonDatabase(personaEntity)); // conversión Ent to Db
-            _IPSContext.SaveChanges();
+                _IPSContext.Personas.Add(ConvertPersonEntityToPersonDatabase(personaEntity)); // conversión Ent to Db
+                _IPSContext.SaveChanges();
+                personaEntity.Message = "Persona guardada con exito";
+                personaEntity.Type = "success";
 
-            return personaEntity;
+                return personaEntity; // temporal
+            }
+            catch (Exception ex)
+            {
+                PersonaEntity persona = new PersonaEntity();
+                persona.Message = ex.Message;
+                return persona;
+            }
+            
         }
 
         //----------------------------
