@@ -1,33 +1,29 @@
 ﻿@model IPS_Entity.Entity.PersonaEntity
 
 @{
-    ViewData["Title"] = "Crear Persona";
+    ViewData["Title"] = "Editar persona";
 }
 
-<h1>Crear Persona</h1>
+<h1>Editar</h1>
 
+@{ if (!string.IsNullOrEmpty(ViewBag.Message))
+                {
 
-
-@{
-
-    if (!string.IsNullOrEmpty(ViewBag.Message))
-    {
-
-        <div class="alert alert-@ViewBag.Type">
-            <strong>@ViewBag.Message</strong>
-        </div> 
-
-    }
-}
+    <div class="alert alert-@ViewBag.Type">
+        <strong>@ViewBag.Message</strong>
+    </div> } }
 
 
 <hr />
-
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />
@@ -48,8 +44,9 @@
                 <input asp-for="Contraseña" class="form-control" />
                 <span asp-validation-for="Contraseña" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Crear" class="btn btn-primary" />
+                <input type="submit" value="Actualizar" class="btn btn-primary" />
             </div>
         </form>
     </div>

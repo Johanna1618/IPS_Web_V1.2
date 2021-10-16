@@ -1,15 +1,29 @@
 ﻿@model IEnumerable<IPS_Entity.Entity.PersonaEntity>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
 <h1>Lista de personas</h1>
 
-<p> 
-    <a asp-action="Create" class="btn btn-primary" type="button">Crear nueva persona</a>
-    <br />
-</p>
+<!-- esta sección de bootstrap se llama Grid System (12 columnas)-->
+<div class="row">
+
+    <div class="col-sm-8">
+        <a asp-action="Create" class="btn btn-primary" type="button">Crear nueva persona</a>
+    </div>
+    <div class="col-sm-4">
+        <!-- aquí se pide desde el controlador: Index, Home... -->
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        {
+    <div class="form-inline">
+        @Html.TextBox("nombre", "", new { @class = "form-control" })
+        <input type="submit" value="Buscar" class="btn btn-primary" />
+    </div>}
+    </div>
+</div>
+<!-- Grid System -->
+
+<br />
+
 <table class="table">
     <thead>
         <tr>
@@ -32,29 +46,29 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellidos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contraseña)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Apellidos)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cedula)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Contraseña)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { cedula=item.Cedula }) 
+        @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }) 
+        @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>}
     </tbody>
 </table>

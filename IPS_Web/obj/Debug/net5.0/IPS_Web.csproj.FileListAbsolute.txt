@@ -454,3 +454,4 @@ C:\Users\ARELIS\source\repos\IPS_Web_V1.3\IPS_Web\obj\Debug\net5.0\IPS_Web.dll
 C:\Users\ARELIS\source\repos\IPS_Web_V1.3\IPS_Web\obj\Debug\net5.0\ref\IPS_Web.dll
 C:\Users\ARELIS\source\repos\IPS_Web_V1.3\IPS_Web\obj\Debug\net5.0\IPS_Web.pdb
 C:\Users\ARELIS\source\repos\IPS_Web_V1.3\IPS_Web\obj\Debug\net5.0\IPS_Web.genruntimeconfig.cache
+C:\Users\ARELIS\source\repos\IPS_Web_V1.2\IPS_Web\obj\Debug\net5.0\Razor\Views\Home\Edit.cshtml.g.cs

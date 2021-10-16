@@ -14,17 +14,25 @@ namespace IPS_Web.Controllers
     public class HomeController : Controller // se puede heredar este controller a otros
     {
         private readonly ILogger<HomeController> _logger;
-        private IpsWebLogic ipswebLogic = new IpsWebLogic(); // private solo para estas vistas
+        private PersonaLogic personaLogic = new PersonaLogic(); // private solo para estas vistas
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string nombre="") // el nombre para la búsqueda
         {
-
-            return View(ipswebLogic.GetAllPeople()); // viene de IpsWebLogic
+            List<PersonaEntity> listPersonEntities = new List<PersonaEntity>();
+            if (string.IsNullOrEmpty(nombre))
+            {
+                listPersonEntities = personaLogic.GetAllPeople();
+            }
+            else
+            {
+                listPersonEntities = personaLogic.GetAllPeople().Where(x => x.Nombre.ToUpper().Contains(nombre.ToUpper())).ToList();
+            }
+            return View(listPersonEntities);
         }
 
         public IActionResult Create() // vista sola
@@ -36,7 +44,7 @@ namespace IPS_Web.Controllers
         [HttpPost]
         public IActionResult Create(PersonaEntity personaEntity) // captura
         {
-            var person = ipswebLogic.AddPerson(personaEntity); // método creado en IpsWebLogic
+            var person = personaLogic.AddPerson(personaEntity); // método creado en...
 
             ViewBag.Message = person.Message;
             ViewBag.Type = person.Type;
@@ -45,8 +53,30 @@ namespace IPS_Web.Controllers
 
         }
 
+        public IActionResult Edit(string cedula)
+        {
+            var person = personaLogic.GetPersonForCedula(cedula);
+
+            ViewBag.Message = person.Message;
+            ViewBag.Type = person.Type;
+
+            return View(person);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(PersonaEntity personaEntity)
+        {
+            var person = personaLogic.UpdatePerson(personaEntity);
+
+            ViewBag.Message = person.Message;
+            ViewBag.Type = person.Type;
+
+            return View(personaEntity);
+        }
+
         public IActionResult SignUP() // Registro
         {
+
             return View();
         }
 

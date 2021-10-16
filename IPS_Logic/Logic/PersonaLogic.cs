@@ -8,7 +8,7 @@ using IPS_Logic.DatabaseIPS;
 
 namespace IPS_Logic.Logic
 {
-    public class IpsWebLogic
+    public class PersonaLogic
     {
         DB_IPSContext _IPSContext = new DB_IPSContext();
 
@@ -38,13 +38,14 @@ namespace IPS_Logic.Logic
             if (GetAllPeople().Where(x => x.Cedula == personaEntity.Cedula).Any()) {
 
                 PersonaEntity persona = new PersonaEntity();
-                persona.Message = "Ya extiste un usuario con esa cédula";
+                persona.Message = "Ya existe un usuario con esa cédula";
                 persona.Type = "danger";
                 return persona;
             }
 
                 _IPSContext.Personas.Add(ConvertPersonEntityToPersonDatabase(personaEntity)); // conversión Ent to Db
                 _IPSContext.SaveChanges();
+
                 personaEntity.Message = "Persona guardada con exito";
                 personaEntity.Type = "success";
 
@@ -59,7 +60,62 @@ namespace IPS_Logic.Logic
             
         }
 
-        //----------------------------
+        // filtrando por cédula
+        public PersonaEntity GetPersonForCedula(string cedula)
+        {
+            var personEntity = GetAllPeople().Where(x => x.Cedula == cedula).FirstOrDefault();
+
+            if (personEntity == null)
+            {
+                PersonaEntity persona = new PersonaEntity();
+                persona.Message = "No existe una persona con esa cédula";
+                persona.Type = "danger";
+                return persona;
+            }
+
+            return personEntity;
+        }
+        // ------------- filtro
+
+        // Actualizando desde el campo cédula
+        public PersonaEntity UpdatePerson(PersonaEntity personaEntity)
+        {
+            try
+            {
+                var personDataBase = _IPSContext.Personas.Where(x => x.Cedula == personaEntity.Cedula).FirstOrDefault();
+
+                if (personDataBase == null)
+                {
+
+                    PersonaEntity persona = new PersonaEntity();
+                    persona.Message = "Ya existe un usuario con esa cédula";
+                    persona.Type = "danger";
+                    return persona;
+                }
+
+                personDataBase.Id = personaEntity.Id;
+                personDataBase.Nombre = personaEntity.Nombre;
+                personDataBase.Apellidos = personaEntity.Apellidos;
+                personDataBase.Cedula = personaEntity.Cedula;
+                personDataBase.Contraseña = personaEntity.Contraseña;
+
+                _IPSContext.Personas.Update(personDataBase);
+                _IPSContext.SaveChanges();
+                personaEntity.Message = "Persona actualizada con exito";
+                personaEntity.Type = "success";
+
+                return personaEntity; 
+            }
+            catch (Exception ex)
+            {
+                PersonaEntity persona = new PersonaEntity();
+                persona.Message = ex.Message;
+                return persona;
+            }
+        }
+        //------------ Actualización
+
+        //------------ los conversores
         private Persona ConvertPersonEntityToPersonDatabase(PersonaEntity personaEntity) // Ent to Db
         {
             Persona persona = new Persona();
@@ -85,8 +141,7 @@ namespace IPS_Logic.Logic
 
             return personaEntity;
         }
-
-
+        //------------
     }
 
 }
