@@ -18,7 +18,7 @@ namespace IPS_Logic.DatabaseIPS
         public int IdIps { get; set; }
 
         public virtual Ciudad IdCiudadNavigation { get; set; }
-        public virtual Ips IdIpsNavigation { get; set; }
+        public virtual Ip IdIpsNavigation { get; set; }
         public virtual ICollection<CitaMedica> CitaMedicas { get; set; }
     }
 }

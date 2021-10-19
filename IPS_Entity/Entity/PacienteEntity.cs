@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using static IPS_Entity.Helper.Enum;
 
 #nullable disable
 
@@ -9,8 +10,10 @@ namespace IPS_Entity.Entity
     {
 
         public int IdPaciente { get; set; }
-        public int IdConvenio { get; set; }
-        //public int IdPersona { get; set; } se agregó por herencia
+        public TipoConvenio Convenio { get; set; } // Cambiado
+        //public int IdConvenio { get; set; } 
+
+        //public int IdPersona { get; set; } ya está por herencia
 
     }
 }

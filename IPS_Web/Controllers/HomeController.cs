@@ -21,7 +21,24 @@ namespace IPS_Web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(string nombre="") // el nombre para la búsqueda
+        public IActionResult Index(string nombre = "")
+        {
+            
+            List<PersonaEntity> listPersonEntities = new List<PersonaEntity>();
+            if (string.IsNullOrEmpty(nombre))
+            {
+                listPersonEntities = personaLogic.GetAllPeople();
+            }
+            else
+            {
+                listPersonEntities = personaLogic.GetAllPeople().Where(x => x.Nombre.ToUpper().Contains(nombre.ToUpper())).ToList();
+            }
+            
+            return View(listPersonEntities);
+        }
+
+        /*
+        public IActionResult ListaPersonas(string nombre = "")
         {
             List<PersonaEntity> listPersonEntities = new List<PersonaEntity>();
             if (string.IsNullOrEmpty(nombre))
@@ -34,6 +51,7 @@ namespace IPS_Web.Controllers
             }
             return View(listPersonEntities);
         }
+        */
 
         public IActionResult Create() // vista sola
         {

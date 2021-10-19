@@ -20,7 +20,7 @@ namespace IPS_Logic.DatabaseIPS
         public virtual DbSet<CitaMedica> CitaMedicas { get; set; }
         public virtual DbSet<Ciudad> Ciudads { get; set; }
         public virtual DbSet<Convenio> Convenios { get; set; }
-        public virtual DbSet<Ips> Ips { get; set; }
+        public virtual DbSet<Ip> Ips { get; set; }
         public virtual DbSet<Medico> Medicos { get; set; }
         public virtual DbSet<MedicoPorSede> MedicoPorSedes { get; set; }
         public virtual DbSet<Paciente> Pacientes { get; set; }
@@ -108,7 +108,7 @@ namespace IPS_Logic.DatabaseIPS
                 entity.Property(e => e.TipoConvenio).HasColumnName("tipoConvenio");
             });
 
-            modelBuilder.Entity<Ips>(entity =>
+            modelBuilder.Entity<Ip>(entity =>
             {
                 entity.ToTable("IPS");
 

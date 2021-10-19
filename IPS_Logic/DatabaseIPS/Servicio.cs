@@ -14,8 +14,8 @@ namespace IPS_Logic.DatabaseIPS
 
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public int CostoAfiliado { get; set; }
-        public int CostoNoAfiliado { get; set; }
+        public int? CostoAfiliado { get; set; }
+        public int? CostoNoAfiliado { get; set; }
 
         public virtual ICollection<Medico> Medicos { get; set; }
     }
